@@ -1,0 +1,27 @@
+-- Configurando ambiente de desenvolvimento Ubuntu 15.04
+-- Instalando Apache
+sudo apt-get install apache2
+
+-- Instalando MySQL
+sudo apt-get install mysql-server php5-mysql
+sudo mysql_install_db -- Inicia os diretorios basicos do mysql
+
+-- Instalando componentes adicionais do PHP para que a comunicação com o MySQL ocorra normalmente
+sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+
+-- Executar no terminal
+a2enmod rewrite
+
+-- Instalando o MySQL WorkBench (install.deb para ubuntu)
+https://dev.mysql.com/downloads/workbench/
+
+-- Liberando a reescrita de URL
+-- Editar o arqui /etc/apache2/apache2.conf substituindo o trecho a seguir
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+
+-- Após salvar as alterações, rode o proximo comando
+service apache2 restart
